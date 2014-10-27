@@ -24,3 +24,31 @@ module SessionsHelper
       cookies.delete(:remember_token)
       self.current_user = nil
    end
+
+   def sign_out
+      current_user.update_attribute(:remember_token, User.hash(User.new_remember_token))
+      cookies.delete(:remember_token)
+      self.current_user = nil
+   end
+
+   #location management methods
+   def store_location
+      if request.get?
+         session[:return_to] = request.url
+      end
+   end
+
+   def redirect_back_or(default)
+      redirect_to(session[:return_to] || default)
+      session.delete(:return_to)
+   end
+
+   #security methods
+   def require_signin
+      if !signed_in?
+         store_location
+         flash[:notice] = "Please Sign In"
+         redirect_to signin_url
+      end
+   end
+end
