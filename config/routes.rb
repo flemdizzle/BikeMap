@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'trips#new'
 
-  get '/maps', to: 'maps#maps'
+  get '/trip', to: 'trips#show'
 
   resources :users
   get '/signup', to: 'users#new'

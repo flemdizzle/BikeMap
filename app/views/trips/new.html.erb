@@ -1,0 +1,11 @@
+
+<%= form_tag("/trip", method: "get") do %>
+<%= label_tag "Starting Location" %>
+<%= text_field_tag :start %><br>
+<%= label_tag "Destination" %>
+<%= text_field_tag :end %><br>
+<%= check_box_tag(:cbs, "true") %>
+<%= label_tag("Capital Bike Share") %>
+<%= submit_tag("Submit") %><br>
+<% end %>
+
