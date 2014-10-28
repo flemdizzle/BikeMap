@@ -15,8 +15,25 @@ function initialize() {
         map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
         
         // simple marker
-        var marker = createMarker(markerCoords1, map, "Hi");
-        
+        // var marker = createMarker(markerCoords1, map, "Hi");
+        //directions
+       var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+
+       directionsDisplay.setMap(map);
+
+       var directionsRequest = {
+        origin: "4141 North Henderson rd, Arlington, VA 22203",
+        destination: "General Assembly, 15th Street Northwest, Washington, DC 20005",
+        travelMode: google.maps.TravelMode.BICYCLING
+       };
+       directionsService.route(directionsRequest, function(response, status) {
+        //Check if request is successful
+        if (status == google.maps.DirectionsStatus.OK) {
+          console.log(status);
+          directionsDisplay.setDirections(response); //Display the directions result
+        }
+       }); 
         // custom marker
         // var customMarker = createCustomMarker(markerCoords1, map, "Hi");
 
@@ -140,24 +157,24 @@ function createMarker(coords, map, title){
 //   };
 //   return image;
 // }
-var directionsService = new google.maps.DirectionsService();
-var directionsDisplay = new google.maps.DirectionsRenderer();
- map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+// var directionsService = new google.maps.DirectionsService();
+// var directionsDisplay = new google.maps.DirectionsRenderer();
+//  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
- directionsDisplay.setMap(map);
+//  directionsDisplay.setMap(map);
 
- var directionsRequest = {
-  origin: "Arlington, VA",
-  destination: "Washington, DC",
-  travelMode: google.maps.TravelMode.BICYCLING
- };
- directionsService.route(directionRequest, function(response, status) {
-  //Check if request is successful
-  if (status == google.maps.DirectionsStatus.OK) {
-    console.log(status);
-    directionsDisplay.setDirections(response); //Display the directions result
-  }
- });
+//  var directionsRequest = {
+//   origin: "Arlington, VA",
+//   destination: "Washington, DC",
+//   travelMode: google.maps.TravelMode.BICYCLING
+//  };
+//  directionsService.route(directionRequest, function(response, status) {
+//   //Check if request is successful
+//   if (status == google.maps.DirectionsStatus.OK) {
+//     console.log(status);
+//     directionsDisplay.setDirections(response); //Display the directions result
+//   }
+//  });
 
 function loadScript() {
   console.log("map loading ...");
