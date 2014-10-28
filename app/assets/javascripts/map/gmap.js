@@ -18,13 +18,13 @@ function initialize() {
         var marker = createMarker(markerCoords1, map, "Hi");
         
         // custom marker
-        var customMarker = createCustomMarker(markerCoords2, map, "Hi");
+        // var customMarker = createCustomMarker(markerCoords1, map, "Hi");
 
         // add infowindow when clicking on the simple marker marker
-        var info = createInfoWindow("Congratulation!");
-        google.maps.event.addListener(marker, 'click', function() {
-          info.open(map,marker);
-        });
+        // var info = createInfoWindow("Congratulation!");
+        // google.maps.event.addListener(marker, 'click', function() {
+        //   info.open(map,marker);
+        // });
 
         // drawing points
         /*google.maps.event.addListener(map, 'click', function(e){
@@ -33,32 +33,32 @@ function initialize() {
 
 
         // drawing dynamic polyline
-          var polyOptions = {
-            strokeColor: '#000000',
-            strokeOpacity: 1.0,
-            strokeWeight: 3
-          };
-        poly = new google.maps.Polyline(polyOptions);
-        poly.setMap(map);
-        google.maps.event.addListener(map, 'click', addLatLng);
+        //   var polyOptions = {
+        //     strokeColor: '#000000',
+        //     strokeOpacity: 1.0,
+        //     strokeWeight: 3
+        //   };
+        // poly = new google.maps.Polyline(polyOptions);
+        // poly.setMap(map);
+        // google.maps.event.addListener(map, 'click', addLatLng);
         
         // drawing custom dynamic polyline ( with dashes/ symbols)
         // Define the symbol, using one of the predefined paths ('CIRCLE')
         // supplied by the Google Maps JavaScript API.
-        var lineSymbol = {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 8,
-          strokeColor: '#393'
-        };
+        // var lineSymbol = {
+        //   path: google.maps.SymbolPath.CIRCLE,
+        //   scale: 8,
+        //   strokeColor: '#393'
+        // };
         // drawing static polyline
-        var lineCoordinates = [
-          new google.maps.LatLng(30.055487, 31.279766),
-          new google.maps.LatLng(30.223356, 31.324345),
-          new google.maps.LatLng(30.345656, 31.567677),
-          new google.maps.LatLng(30.565678, 31.676887)
-        ];
-        createPolyline(map,lineCoordinates,lineSymbol);
-        animateCircle();
+        // var lineCoordinates = [
+        //   new google.maps.LatLng(30.055487, 31.279766),
+        //   new google.maps.LatLng(30.223356, 31.324345),
+        //   new google.maps.LatLng(30.345656, 31.567677),
+        //   new google.maps.LatLng(30.565678, 31.676887)
+        // ];
+        // createPolyline(map,lineCoordinates,lineSymbol);
+        // animateCircle();
 
    }
 // function animateCircle() {
@@ -140,17 +140,32 @@ function createMarker(coords, map, title){
 //   };
 //   return image;
 // }
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
+ map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
+ directionsDisplay.setMap(map);
+
+ var directionsRequest = {
+  origin: "Arlington, VA",
+  destination: "Washington, DC",
+  travelMode: google.maps.TravelMode.BICYCLING
+ };
+ directionsService.route(directionRequest, function(response, status) {
+  //Check if request is successful
+  if (status == google.maps.DirectionsStatus.OK) {
+    console.log(status);
+    directionsDisplay.setDirections(response); //Display the directions result
+  }
+ });
 
 function loadScript() {
   console.log("map loading ...");
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  //'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBJYFdplGeKUUEmGZ-vL4ydiSZ09Khsa_o&sensor=false&libraries=drawing'
+  
   script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false' +
-    //'&v=3.14'+
-    //'&key=AIzaSyBJYFdplGeKUUEmGZ-vL4ydiSZ09Khsa_o'+
-    //'&libraries=drawing'+
+
     '&callback=initialize';
   document.body.appendChild(script);
 }
