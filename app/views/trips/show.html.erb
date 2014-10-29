@@ -3,8 +3,11 @@
   </div>
   <div class="title">
       <h1>DC Bike Map</h1>
+      <%= @cbs %>
    </div>
 </div>
 <script type="text/javascript">
-   var start = <% @start %>
+   var startTrip = "<%= @start %>";
+   var endTrip = "<%= @end %>";
+   var cbs = "<%= @cbs %>";
 </script>

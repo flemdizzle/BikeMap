@@ -31,6 +31,9 @@ gem 'spring',        group: :development
 #heroku
 gem 'rails_12factor', group: :production
 
+#for parsing stuff
+gem 'nokogiri'
+
 #testing
 group :test do
    gem 'capybara'

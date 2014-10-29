@@ -1,0 +1,8 @@
+
+.button{
+   @extend .input-group-btn;
+   .sub-button{
+      @extend .btn;
+      @extend .btn-default;
+   }
+}

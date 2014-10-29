@@ -354,7 +354,7 @@ function initialize() {
         map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
         
         // simple marker
-        var marker = createMarker(markerCoords1, map, "Hi");
+        // var marker = createMarker(markerCoords1, map, "Hi");
         //directions
        var directionsService = new google.maps.DirectionsService();
       var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -362,8 +362,8 @@ function initialize() {
        directionsDisplay.setMap(map);
 
        var directionsRequest = {
-        origin: "4141 North Henderson rd, Arlington, VA 22203",
-        destination: "General Assembly, 15th Street Northwest, Washington, DC 20005",
+        origin: startTrip,
+        destination: endTrip,
         travelMode: google.maps.TravelMode.BICYCLING
        };
        directionsService.route(directionsRequest, function(response, status) {
