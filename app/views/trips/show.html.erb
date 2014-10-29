@@ -1,14 +1,47 @@
 <div id="map-container">
   <div id="map-canvas">
   </div>
-  <div class="title">
-      <h1>DC Bike Map</h1>
-      <%= @cbs %>
-   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choose Your Bike Share Stations</h4>
+      </div>
+      <div class="modal-body">
 
+                     <div class="btn-group-vertical" data-toggle="buttons">
+                       <label class="btn btn-primary">
+                              <input type="radio" name="options" id="option1" autocomplete="off">
+                              <%= @bikes_available[0] %>
+                        </label>
+
+                       <label class="btn btn-primary">
+                              <input type="radio" name="options" id="option2" autocomplete="off">
+                              <%= @bikes_available[1] %>
+                        </label>
+
+                       <label class="btn btn-primary">
+                              <input type="radio" name="options" id="option3" autocomplete="off">
+                              <%= @bikes_available[2] %>
+                        </label>
+                     </div> 
+                     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
    var startTrip = "<%= @start %>";
    var endTrip = "<%= @end %>";
    var cbs = "<%= @cbs %>";
+   if(cbs === "true"){
+      $('#myModal').modal('toggle');
+   };
+
 </script>

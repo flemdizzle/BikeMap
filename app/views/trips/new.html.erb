@@ -2,12 +2,12 @@
    <div class="row">
       <%= form_tag("/trip", method: "get") do %>
       <div class="start-container">
-         <%= text_field_tag :start, "Start" %>
+         <%= text_field_tag :start, nil, placeholder: "Start" %>
       </div>
    </div>
    <div class="row">
          <div class="input">
-            <%= text_field_tag :end, "Finish" %>
+            <%= text_field_tag :end, nil, placeholder: "Finish" %>
             <span class="button">
                <%= submit_tag("Go!", :class => "sub-button") %>
             </span>
