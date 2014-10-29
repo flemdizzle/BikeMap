@@ -1,8 +1,34 @@
-
-.button{
-   @extend .input-group-btn;
-   .sub-button{
-      @extend .btn;
-      @extend .btn-default;
+@import 'bootstrap';
+.center{
+   @extend .container-fluid;
+   .row{
+      @extend .row;
+      .start-container{
+         @extend .col-md-8;
+         @extend .col-md-offset-2;
+         @extend .col-xs-10;
+         @extend .col-xs-offset-1;
+         #start{
+            @extend .form-control;
+         }
+      }  
+      .input{
+         @extend .input-group;
+         @extend .start-container;
+         #end{
+            @extend .form-control;
+         }
+         .button{
+            @extend .input-group-btn;
+            .sub-button{
+               @extend .btn;
+               @extend .btn-success;
+            }
+         }
+      }
+   .checkbox-container{
+      @extend .start-container;
+      @extend .text-right;
+   }
    }
 }
