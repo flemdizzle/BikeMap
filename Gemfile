@@ -34,6 +34,9 @@ gem 'rails_12factor', group: :production
 #for parsing stuff
 gem 'nokogiri'
 
+#for finding distance between lat and long
+gem 'geocoder'
+
 #testing
 group :test do
    gem 'capybara'
