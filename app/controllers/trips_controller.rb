@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
     def new
+      @stations_lat_long = Station.lat_long
     end
     def show
       @start = params[:start]

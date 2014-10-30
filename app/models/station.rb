@@ -2,12 +2,21 @@ class Station < ActiveRecord::Base
    geocoded_by :location
    require 'open-uri'
 
+   def self.lat_long
+      array = []
+      Station.all.each do |station|
+         array << [station[:latitude], station[:longitude]]
+      end
+      return array
+   end
+
    def self.return_3_closest_stations(location)
       near_station_array = []
       lat_long_location = Geocoder.coordinates(location)
       near = Station.near(location).first(3)
       near.each do |station|
          near_station_array << Station.available_bikes(station.distance, station.station_id)
+         # near_station_array << station.available_bikes
       end
       near_station_array
    end

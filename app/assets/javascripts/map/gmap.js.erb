@@ -57,23 +57,30 @@ var directionsService;
 
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
-  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
   var mapOptions = {
-    zoom: 6,
-    center: chicago
+    center: new google.maps.LatLng(38.895673, -77.050494),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.NORMAL
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   directionsDisplay.setMap(map);
 directionsService = new google.maps.DirectionsService();
+
+
+    for (i = 0; i < stations.length; i++) { 
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(stations[i][0], stations[i][1]),
+        map: map
+      });
+  }
 }
 
 function calcRoute() {
   var start = startTrip;
   var end = endTrip;
-  var waypts = [{location:"38.89841, -77.039624", stopover:true}];
+  var waypts = [];
   var radioArray =$('.active input');
   for (var i = 0; i < radioArray.length; i++) {
-    console.log(radioArray[i].value);
       waypts.push({
           location:radioArray[i].value,
           stopover:true});

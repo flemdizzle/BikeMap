@@ -42,13 +42,17 @@
     </div>
   </div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 <script type="text/javascript">
+   var stations = [];
    var startTrip = "<%= @start %>";
    var endTrip = "<%= @end %>";
    var cbs = "<%= @cbs %>";
    if(cbs === "true"){
       $('#myModal').modal('toggle');
+   } else {
+      $( document ).ready(function() {
+         calcRoute();
+      }); 
    };
-
 </script>
