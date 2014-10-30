@@ -1,13 +1,54 @@
 <div id="map-container">
   <div id="map-canvas">
   </div>
-  <div class="title">
-      <h1>DC Bike Map</h1>
-      <%= @cbs %>
-   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choose Your Bike Share Stations</h4>
+      </div>
+      <form>
+         <div class="modal-body">
+                           <h3>Start</h3>
+                           <div class="btn-group-vertical" data-toggle="buttons">
+                           <% @start_stations.each do |station|%>
+                             <label class="btn btn-primary">
+                                    <input type="radio" name="start" id="option" value="<%= station[:location]%>" >
+                                    <%= station[:distance] %> <%= station[:address] %> <%= station[:bikes] %> bikes.
+                              </label>
+                           <% end %>
+                           </div> 
+                           <h3>End</h3>
+                           <div class="btn-group-vertical" data-toggle="buttons">
+                           <% @end_stations.each do |station|%>
+                             <label class="btn btn-primary">
+                                    <input type="radio" name="end" id="option" value="<%= station[:location]%>" >
+                                    <%= station[:distance] %> <%= station[:address] %> <%= station[:docks] %> docks.
+                              </label>
+                           <% end %>
+                           </div> 
+            </div>
+            <div class="modal-footer">
+               <span class="btn btn-default">
+                     <%= link_to "Back", root_path %>
+               </span>
+               <!-- check if dismiss and hide are the same thing -->
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="calcRoute();">Submit</button>
+            </div>
+         </form>
+    </div>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script type="text/javascript">
    var startTrip = "<%= @start %>";
    var endTrip = "<%= @end %>";
    var cbs = "<%= @cbs %>";
+   if(cbs === "true"){
+      $('#myModal').modal('toggle');
+   };
+
 </script>

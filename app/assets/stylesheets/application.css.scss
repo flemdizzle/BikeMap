@@ -13,4 +13,15 @@
  *= require_tree .
  *= require_self
  */
- @import 'bootstrap'
+ @import 'bootstrap';
+ header{
+   @extend .navbar;
+   @extend .navbar-default;
+   @extend .navbar-fixed-top;
+   .navbar-container{
+      @extend .container;
+   }
+ }
+ body{
+   padding-top: 50px;
+ }
