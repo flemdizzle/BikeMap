@@ -59,21 +59,27 @@ function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   var mapOptions = {
     center: new google.maps.LatLng(38.895673, -77.050494),
-    zoom: 12,
+    zoom: 13,
     mapTypeId: google.maps.MapTypeId.NORMAL
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   directionsDisplay.setMap(map);
 directionsService = new google.maps.DirectionsService();
 
+    var capitalLogo = {
+        url: 'http://www.capitalbikeshare.com/assets/images/stations/map-icon.png',
+    };
 
     for (i = 0; i < stations.length; i++) { 
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(stations[i][0], stations[i][1]),
+        icon: capitalLogo,
         map: map
       });
+
   }
 }
+
 
 function calcRoute() {
   var start = startTrip;
