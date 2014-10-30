@@ -17,7 +17,13 @@ class Station < ActiveRecord::Base
       # spits out the number of bikes at a given station
       doc.xpath('//station').each do |node|
          if node.children[0].text == "#{id}"
-            return "#{distance.round(2)}mi. #{node.children[1].text} Station #{node.children[12].text}/#{node.children[12].text.to_i + node.children[13].text.to_i} bikes."
+            latitude = node.children[4].text
+            distance = distance.round(2)
+            longitude = node.children[5].text
+            bikes = node.children[12].text
+            docks = node.children[13].text
+            address = node.children[1].text
+            return Hash[distance: "#{distance}mi.", location: "#{latitude}, #{longitude}", bikes: "#{bikes}", docks: "#{docks}", address: "#{address}"]
          end
       end
    end

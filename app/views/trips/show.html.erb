@@ -12,45 +12,30 @@
       </div>
       <form>
          <div class="modal-body">
-      
+                           <h3>Start</h3>
                            <div class="btn-group-vertical" data-toggle="buttons">
+                           <% @start_stations.each do |station|%>
                              <label class="btn btn-primary">
-                                    <input type="radio" name="start" id="option1" autocomplete="off">
-                                    <%= @start_stations[0] %>
+                                    <input type="radio" name="start" id="option1" value="<%= station[:location]%>" >
+                                    <%= station[:distance] %> <%= station[:address] %> <%= station[:bikes] %> bikes.
                               </label>
-      
-                             <label class="btn btn-primary">
-                                    <input type="radio" name="start" id="option2" autocomplete="off">
-                                    <%= @start_stations[1] %>
-                              </label>
-      
-                             <label class="btn btn-primary">
-                                    <input type="radio" name="start" id="option3" autocomplete="off">
-                                    <%= @start_stations[2] %>
-                              </label>
+                           <% end %>
                            </div> 
-      
+                           <h3>End</h3>
                            <div class="btn-group-vertical" data-toggle="buttons">
+                           <% @end_stations.each do |station|%>
                              <label class="btn btn-primary">
-                                    <input type="radio" name="end" id="option1" autocomplete="off">
-                                    <%= @end_stations[0] %>
+                                    <input type="radio" name="end" id="option1" value="<%= station[:location]%>" >
+                                    <%= station[:distance] %> <%= station[:address] %> <%= station[:docks] %> docks.
                               </label>
-      
-                             <label class="btn btn-primary">
-                                    <input type="radio" name="end" id="option2" autocomplete="off">
-                                    <%= @end_stations[1] %>
-                              </label>
-      
-                             <label class="btn btn-primary">
-                                    <input type="radio" name="end" id="option3" autocomplete="off">
-                                    <%= @end_stations[2] %>
-                              </label>
+                           <% end %>
                            </div> 
             </div>
             <div class="modal-footer">
                <span class="btn btn-default">
                      <%= link_to "Back", root_path %>
                </span>
+               <!-- check if dismiss and hide are the same thing -->
               <button type="submit" formtarget="_self" class="btn btn-primary" data-dismiss="modal">Submit</button>
             </div>
          </form>

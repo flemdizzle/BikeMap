@@ -14,11 +14,10 @@ function initialize() {
         // initializing map
         map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
         
-        // simple marker
-        // var marker = createMarker(markerCoords1, map, "Hi");
-        //directions
-       var directionsService = new google.maps.DirectionsService();
-      var directionsDisplay = new google.maps.DirectionsRenderer();
+        
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
+       
 
        directionsDisplay.setMap(map);
        var waypts = [{location:"38.89841, -77.039624", stopover:true}];
