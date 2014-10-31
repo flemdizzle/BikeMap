@@ -19,9 +19,16 @@
    @extend .navbar-default;
    @extend .navbar-fixed-top;
    .navbar-container{
-      @extend .container;
+      @extend .container-fluid;
    }
  }
+.navbar-mobile{
+   @extend .navbar-header;
+   a{
+      font-weight: bold;
+      @extend .navbar-brand;
+   }
+}
  body{
    padding-top: 50px;
  }
