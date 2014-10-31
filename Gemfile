@@ -38,6 +38,9 @@ gem 'rails_12factor', group: :production
 #for parsing stuff
 gem 'nokogiri'
 
+#for dumping that seed
+gem 'seed_dump', group: :development
+
 #testing
 group :test do
    gem 'capybara'
