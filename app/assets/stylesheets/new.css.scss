@@ -30,6 +30,8 @@
    .checkbox-container{
       @extend .start-container;
       @extend .text-right;
+      font-size: 20px;
+      font-weight: bold;
    }
    }
 }
