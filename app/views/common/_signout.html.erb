@@ -1,6 +1,6 @@
 <% if signed_in? %>
    <%= form_for :session, url: signout_path, method: 'delete' do |f| %>
-      Signed In As <%= link_to current_user.name, current_user %>
-      <%= f.submit 'Sign Out', id: 'signout' %>
+      Signed In As <%= link_to current_user.name.titleize, current_user, :class => "link" %>
+      <%= f.submit 'Sign Out', id: 'signout', :class => "signout btn btn-default btn-xs" %>
    <% end %>
 <% end %>
