@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class StationsTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "lat_long returns array of station lat longs" do 
+    assert_equal(Array, Station.lat_long.class)
+  end
+
 end

@@ -43,8 +43,8 @@ gem 'seed_dump', group: :development
 
 #testing
 group :test do
-   gem 'capybara'
-   gem 'rspec-rails'
+   # gem 'capybara'
+   # gem 'rspec-rails'
    gem 'simplecov'
 end
 # Use ActiveModel has_secure_password
