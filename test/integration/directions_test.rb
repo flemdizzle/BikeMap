@@ -18,6 +18,7 @@ class DirectionsTest < ActionDispatch::IntegrationTest
     fill_in 'start', with: @address
     fill_in 'end', with: @address2
     click_button 'Go!'
+    save_and_open_page
     assert_equal trip_path, current_path
   end
 
@@ -30,7 +31,6 @@ class DirectionsTest < ActionDispatch::IntegrationTest
     visit root_url
     click_button 'Go!'
     assert_equal trip_path, current_path
-
   end
 
 end
