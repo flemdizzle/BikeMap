@@ -2,6 +2,11 @@ require 'test_helper'
 
 class StationsTest < ActiveSupport::TestCase
 
+  def setup
+    @address = '1800 South Bell Street
+    Arlington, VA 22202'
+  end
+
   test "lat_long returns array" do 
     assert_kind_of(Array, Station.lat_long)
   end
@@ -15,16 +20,15 @@ class StationsTest < ActiveSupport::TestCase
   end
 
   test "return_3_closest_stations returns an array" do 
-    assert_kind_of(Array, Station.return_3_closest_stations('1800 South Bell Street
-    Arlington, VA 22202'))
+    assert_kind_of(Array, Station.return_3_closest_stations(@address))
   end
 
   test "return_3_closest_stations returns 3 stations" do
-    assert_equal(3, Station.return_3_closest_stations('1800 South Bell Street Arlington, VA 22202').length)
+    assert_equal(3, Station.return_3_closest_stations(@address).length)
   end
 
   test "each value in return_3_closest_stations array is an hash" do 
-    assert_kind_of(Hash, Station.return_3_closest_stations('1800 South Bell Street Arlington, VA 22202').first())
+    assert_kind_of(Hash, Station.return_3_closest_stations(@address).first())
   end
 
   test "available_bikes returns a hash" do 
@@ -39,5 +43,5 @@ class StationsTest < ActiveSupport::TestCase
   test "available_bikes should not return improper formatting" do
     assert_nil(Station.available_bikes(0.01,3)[:dogs])
   end
-  
+
 end
