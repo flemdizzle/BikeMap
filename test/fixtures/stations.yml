@@ -2,10 +2,20 @@
 
 one:
   station_id: 1
-  latitude: 1.5
-  longitude: 1.5
+  latitude: 38.8561
+  longitude: -77.0512
 
 two:
-  station_id: 1
-  latitude: 1.5
-  longitude: 1.5
+  station_id: 2
+  latitude: 38.85725
+  longitude: -77.05332
+
+three:
+  station_id: 3
+  latitude: 38.8564
+  longitude: -77.0492
+
+four:
+  station_id: 38
+  latitude: 38.901385
+  longitude: -76.941877

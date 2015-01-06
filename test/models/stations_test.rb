@@ -7,7 +7,8 @@ class StationsTest < ActiveSupport::TestCase
   end
 
   test "return_3_closest_stations returns an array" do 
-    assert_kind_of(Array, Station.return_3_closest_stations(-77.0512))
+    assert_kind_of(Array, Station.return_3_closest_stations('1800 South Bell Street
+    Arlington, VA 22202'))
   end
 
   test "available_bikes returns a hash" do 
